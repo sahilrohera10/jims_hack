@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-const PaymentGateway = () => {
+const PaymentGateway = ({ navigation }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [showDialPad, setShowDialPad] = useState(false);
 
@@ -17,10 +17,15 @@ const PaymentGateway = () => {
     setPhoneNumber((prevNumber) => prevNumber + number);
   };
 
+  const gotopay3 = () => {
+    navigation.navigate("pay3");
+  };
+
   const handlePayPress = () => {
     // Implement your payment logic here
     console.log(`Payment initiated for ${phoneNumber}`);
     setShowDialPad(false); // Hide the dial pad after payment is initiated
+    gotopay3();
   };
 
   const handleClearPress = () => {
@@ -53,7 +58,11 @@ const PaymentGateway = () => {
         </View>
 
         <View style={styles.payButtonContainer}>
-          <TouchableOpacity style={styles.payButton} onPress={handlePayPress}>
+          <TouchableOpacity
+            // onPress={gotopay3}
+            style={styles.payButton}
+            onPress={handlePayPress}
+          >
             <Text style={styles.payButtonText}>Pay</Text>
           </TouchableOpacity>
         </View>

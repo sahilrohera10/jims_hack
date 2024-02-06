@@ -4,6 +4,7 @@ import Home from "./screens/Home";
 import { Feather } from "@expo/vector-icons";
 import Pay2 from "./screens/Pay2";
 import Contri from "./screens/Contri";
+import Preview from "./screens/Preview";
 
 const Tab = createBottomTabNavigator();
 
@@ -101,7 +102,7 @@ export default function TabsNavigation() {
           tabBarLabel: "History",
           tabBarLabelStyle: { fontSize: 13 },
         }}
-        component={Home}
+        component={Preview}
       />
     </Tab.Navigator>
     // </NavigationContainer>

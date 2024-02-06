@@ -71,6 +71,10 @@ const Contri = ({ navigation }) => {
     //   { id: 4, name: "House Rent", members: 2 },
   ];
 
+  const gotosettle = () => {
+    navigation.navigate("settle");
+  };
+
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.createButton} onPress={showModal}>
@@ -84,7 +88,10 @@ const Contri = ({ navigation }) => {
         <FlatList
           data={contributionRoomsData}
           renderItem={({ item }) => (
-            <View style={styles.contributionRoomItem}>
+            <TouchableOpacity
+              onPress={gotosettle}
+              style={styles.contributionRoomItem}
+            >
               <View
                 style={{
                   flexDirection: "row",
@@ -100,7 +107,7 @@ const Contri = ({ navigation }) => {
                 <Text style={{ color: "#EEC050" }}>Total: $20</Text>
               </View>
               {/* Display other contribution room details */}
-            </View>
+            </TouchableOpacity>
           )}
           keyExtractor={(item) => item.id.toString()}
         />
