@@ -14,9 +14,14 @@ const contriSchema = mongoose.Schema({
       },
       amt: {
         required: true,
-        type: String,
+        type: Number,
         trim: true,
+        defaultValue:0
       },
+      name:{
+          required: true,
+          type: String,
+      }
     },
   ],
   status: {
@@ -24,6 +29,7 @@ const contriSchema = mongoose.Schema({
     type: String,
     enum: ["settled", "ongoing"], 
     trim: true,
+    default: "ongoing",
   },
 }, { timestamps: true });
 const contri_db = mongoose.model("contries", contriSchema);

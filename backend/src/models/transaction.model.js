@@ -32,7 +32,7 @@ const transactionSchema = mongoose.Schema(
         },
         Labels:{
             required :true,
-            enum: ["Grocer", "Shopping","Electronics","Entertainment","Others"], 
+            enum: ["Groceries", "Shopping","Electronics","Entertainment","Others"], 
             type:String,
             trim:true,
         },
