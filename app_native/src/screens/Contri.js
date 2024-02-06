@@ -29,11 +29,6 @@ const items = [
 ];
 
 const Contri = ({ navigation }) => {
-  const handleCreateRoom = () => {
-    // Handle the logic for creating a contribution room
-    // You can navigate to another screen or perform any other actions
-  };
-
   const [selectedItems, setSelectedItems] = useState([]);
   const multiSelectRef = useRef(null);
 
@@ -48,12 +43,6 @@ const Contri = ({ navigation }) => {
 
   const [text, setText] = React.useState("");
 
-  //   const [age, setAge] = React.useState("");
-
-  //   const handleChange = (event) => {
-  //     setAge(event.target.value);
-  //   };
-
   const [visible, setVisible] = React.useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
@@ -64,12 +53,25 @@ const Contri = ({ navigation }) => {
     height: "60%",
   };
 
-  const contributionRoomsData = [
+  const [contributionRoomsData, setContributionRoomsData] = useState([
     { id: 1, name: "Trip to Goa", members: 4 },
     { id: 2, name: "House Rent", members: 2 },
     { id: 3, name: "Trip to Goa", members: 4 },
     //   { id: 4, name: "House Rent", members: 2 },
-  ];
+  ]);
+
+  const addRandomItemToFirstIndex = () => {
+    const newItem = {
+      id: Math.random().toString(36).substring(7),
+      name: text,
+      members: Math.floor(Math.random() * 10) + 1, // Random number of members (1 to 10)
+    };
+
+    // Add the new item to the 0th index of the array
+    const updatedData = [newItem, ...contributionRoomsData];
+    setContributionRoomsData(updatedData);
+    console.log("Updated Data:", updatedData);
+  };
 
   const gotosettle = () => {
     navigation.navigate("settle");
@@ -181,7 +183,10 @@ const Contri = ({ navigation }) => {
             </View>
           </View>
           {/* </Box> */}
-          <TouchableOpacity style={styles.createButton} onPress={showModal}>
+          <TouchableOpacity
+            style={styles.createButton}
+            onPress={addRandomItemToFirstIndex}
+          >
             <Text style={styles.buttonText}>Create Contri Room</Text>
           </TouchableOpacity>
         </Modal>

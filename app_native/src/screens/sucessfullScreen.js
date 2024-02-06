@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, Animated } from 'react-native';
-import LottieView from 'lottie-react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import React, { useEffect } from "react";
+import { View, Text, StyleSheet, Animated } from "react-native";
+import LottieView from "lottie-react-native";
+import { LinearGradient } from "expo-linear-gradient";
 
 const SuccessfulScreen = () => {
   const fadeAnim = new Animated.Value(0);
@@ -15,10 +15,10 @@ const SuccessfulScreen = () => {
   }, [fadeAnim]);
 
   return (
-    <LinearGradient colors={['#111', '#004d40']} style={styles.container}>
+    <View style={styles.container}>
       <Animated.View style={[styles.animationContainer, { opacity: fadeAnim }]}>
         <LottieView
-          source={require('../../assets/sucessful.json')} // Replace with the correct path
+          source={require("../../assets/sucessful.json")} // Replace with the correct path
           autoPlay
           loop={true}
           style={styles.animation}
@@ -38,18 +38,19 @@ const SuccessfulScreen = () => {
         <Text style={styles.detailsItem}>Status: Completed</Text>
         <Text style={styles.detailsItem}>Reference Number: ABCD1234</Text>
       </View>
-    </LinearGradient>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: '100%',
+    width: "100%",
     padding: 20,
+    backgroundColor: "#121212",
   },
   animationContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     marginBottom: 10,
   },
   animation: {
@@ -57,20 +58,20 @@ const styles = StyleSheet.create({
     height: 300,
   },
   detailsContainer: {
-    backgroundColor: '#333',
+    backgroundColor: "#333",
     borderRadius: 8,
     padding: 20,
-    marginTop: 110,
+    marginTop: 40,
   },
   detailsText: {
     fontSize: 18,
-    fontWeight: 'bold',
-    color: '#fff',
+    fontWeight: "bold",
+    color: "#EEC050",
     marginBottom: 10,
   },
   detailsItem: {
     fontSize: 16,
-    color: '#fff',
+    color: "#fff",
     marginBottom: 5,
   },
 });

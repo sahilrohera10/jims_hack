@@ -9,7 +9,11 @@ import {
 } from "react-native";
 import { PieChart } from "react-native-gifted-charts";
 
-const Preview = () => {
+const Preview = ({ navigation }) => {
+  const gotosuccess = () => {
+    navigation.navigate("success");
+  };
+
   const data = [
     { name: "sahil", upi_id: "12345678", amt: 300 },
     { name: "arora", upi_id: "12345678", amt: 200 },
@@ -63,7 +67,10 @@ const Preview = () => {
                 <Text style={[styles.cardText, { color: "#EEC050" }]}>
                   Payable Amount: Rs.{avgAmtPerPerson - item.amt}
                 </Text>
-                <TouchableOpacity style={styles.settleUpButton}>
+                <TouchableOpacity
+                  onPress={gotosuccess}
+                  style={styles.settleUpButton}
+                >
                   <Text style={styles.settleUpButtonText}>
                     Pay Rs.{avgAmtPerPerson - item.amt}
                   </Text>

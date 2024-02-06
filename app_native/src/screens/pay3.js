@@ -11,13 +11,14 @@ import { LinearGradient } from "expo-linear-gradient";
 
 const Pay3 = ({ navigation }) => {
   const [paymentType, setPaymentType] = useState("Personal");
+  const [contriroom, setContrirrom] = useState();
 
   const gotosuccess = () => {
     navigation.navigate("success");
   };
 
   return (
-    <LinearGradient colors={["#111", "#004d40"]} style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.heading}>Payment Details</Text>
 
       <View style={styles.inputContainer}>
@@ -50,11 +51,22 @@ const Pay3 = ({ navigation }) => {
           <Picker.Item label="Contri" value="Contri" />
         </Picker>
       </View>
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Select Contri Room:</Text>
+        <Picker
+          style={styles.picker}
+          selectedValue={paymentType}
+          onValueChange={(itemValue) => setPaymentType(itemValue)}
+        >
+          <Picker.Item label="JIMS HACK" value="JIMS HACK" />
+          <Picker.Item label="RJ HACK" value="RJ HACK" />
+        </Picker>
+      </View>
 
       <TouchableOpacity onPress={gotosuccess} style={styles.payNowButton}>
         <Text style={styles.payNowText}>Pay Now</Text>
       </TouchableOpacity>
-    </LinearGradient>
+    </View>
   );
 };
 
@@ -63,7 +75,8 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     padding: 20,
-    paddingTop: 125,
+    paddingTop: 85,
+    backgroundColor: "#121212",
   },
   heading: {
     fontSize: 24,
@@ -94,7 +107,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   payNowButton: {
-    backgroundColor: "#4CAF50",
+    backgroundColor: "#EEC050",
     padding: 15,
     borderRadius: 8,
     alignItems: "center",
@@ -102,7 +115,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   payNowText: {
-    color: "#fff",
+    color: "black",
     fontSize: 18,
     fontWeight: "bold",
   },
