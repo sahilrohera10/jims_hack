@@ -21,6 +21,9 @@ Incorporate interactive graphs and charts that allow users to explore their tran
 Enhance security and convenience by incorporating biometric authentication methods, providing users with a seamless yet secure payment experience
 
 ## Technologies Used:
-### 1.React Native: Frontend framework for building cross-platform mobile applications.
-### 2.Node.js: Backend framework for building scalable server-side applications.
-### 3.Additional technologies or libraries can be listed here.
+### 1.React Native: 
+Frontend framework for building cross-platform mobile applications.
+### 2.Node.js: 
+Backend framework for building scalable server-side applications.
+### 3.Mongo DB
+### 4.React-Native Chart Kit
