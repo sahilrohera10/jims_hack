@@ -1,5 +1,5 @@
 // CreateContriRoomScreen.js
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -12,18 +12,19 @@ import { Modal, Portal, Button, PaperProvider } from "react-native-paper";
 import RNPickerSelect from "react-native-picker-select";
 import { TextInput } from "react-native-paper";
 import MultiSelect from "react-native-multiple-select";
+import axios from "axios";
 
 const items = [
   {
-    id: "92iijs7yta",
+    upi_id: "92iijs7yta",
     name: "Sahil Arora",
   },
   {
-    id: "a0s0a8ssbsd",
+    upi_id: "a0s0a8ssbsd",
     name: "Yash Singhal",
   },
   {
-    id: "16hbajsabsd",
+    upi_id: "16hbajsabsd",
     name: "Yash Raj Hans",
   },
 ];
@@ -34,8 +35,8 @@ const Contri = ({ navigation }) => {
 
   const onSelectedItemsChange = (mem) => {
     // Map selected items to include both id and name
-    const selectedItemsWithNames = mem.map((id) =>
-      items.find((item) => item.id === id)
+    const selectedItemsWithNames = mem.map((upi_id) =>
+      items.find((item) => item.upi_id === upi_id)
     );
     setSelectedItems(selectedItemsWithNames);
     console.log("items", selectedItemsWithNames);
@@ -53,24 +54,76 @@ const Contri = ({ navigation }) => {
     height: "60%",
   };
 
-  const [contributionRoomsData, setContributionRoomsData] = useState([
-    { id: 1, name: "Trip to Goa", members: 4 },
-    { id: 2, name: "House Rent", members: 2 },
-    { id: 3, name: "Trip to Goa", members: 4 },
-    //   { id: 4, name: "House Rent", members: 2 },
-  ]);
+  const [contributionRoomsData, setContributionRoomsData] = useState();
 
-  const addRandomItemToFirstIndex = () => {
-    const newItem = {
-      id: Math.random().toString(36).substring(7),
-      name: text,
-      members: Math.floor(Math.random() * 10) + 1, // Random number of members (1 to 10)
+  const callContri = async () => {
+    try {
+      // Make the GET request using fetch
+      const response = await fetch(
+        "http://192.168.76.114:8001/getContri/ongoing"
+      );
+
+      // Check if the response status is OK (200)
+      if (response.ok) {
+        // Parse the response body as JSON
+        const data = await response.json();
+
+        // Handle the response
+        console.log("Server Response:", data.data);
+
+        // Set the data using setContributionRoomsData
+        setContributionRoomsData(data.data);
+      } else {
+        // If the response status is not OK, throw an error
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+    } catch (error) {
+      // Handle errors
+      console.error("Error:", error);
+      // You may choose to handle the error differently
+    }
+  };
+
+  useEffect(() => {
+    callContri();
+  }, []);
+
+  const addRandomItemToFirstIndex = async () => {
+    // const newItem = {
+    //   id: Math.random().toString(36).substring(7),
+    //   name: text,
+    //   members: Math.floor(Math.random() * 10) + 1, // Random number of members (1 to 10)
+    // };
+
+    // // Add the new item to the 0th index of the array
+    // const updatedData = [newItem, ...contributionRoomsData];
+    // setContributionRoomsData(updatedData);
+    // console.log("Updated Data:", updatedData);
+
+    // const apiUrl = "http://192.168.76.114/createContri";
+
+    const data = {
+      contri_name: text,
+      member: selectedItems,
     };
 
-    // Add the new item to the 0th index of the array
-    const updatedData = [newItem, ...contributionRoomsData];
-    setContributionRoomsData(updatedData);
-    console.log("Updated Data:", updatedData);
+    try {
+      // Make the POST request using Axios
+      const response = await axios.post(
+        "http://192.168.76.114:8001/createContri",
+        data
+      );
+
+      // Handle the response
+      console.log("Server Response:", response);
+
+      // Return the data if needed
+      // return response.data;
+    } catch (error) {
+      // Handle errors
+      console.error("Error:", error);
+      throw error; // You may choose to handle the error differently
+    }
   };
 
   const gotosettle = () => {
@@ -104,14 +157,14 @@ const Contri = ({ navigation }) => {
                 <Text
                   style={{ color: "#fff", fontSize: 18, fontWeight: "bold" }}
                 >
-                  {item.name}
+                  {item.contri_name}
                 </Text>
                 <Text style={{ color: "#EEC050" }}>Total: $20</Text>
               </View>
               {/* Display other contribution room details */}
             </TouchableOpacity>
           )}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={(item) => item._id}
         />
       </View>
       <View style={{ height: "43%", marginTop: 10 }}>
@@ -132,14 +185,14 @@ const Contri = ({ navigation }) => {
                 <Text
                   style={{ color: "#fff", fontSize: 18, fontWeight: "bold" }}
                 >
-                  {item.name}
+                  {item.contri_name}
                 </Text>
                 <Text style={{ color: "#EEC050" }}>Total: $20</Text>
               </View>
               {/* Display other contribution room details */}
             </View>
           )}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={(item) => item._id}
         />
       </View>
       <Portal>
@@ -159,10 +212,10 @@ const Contri = ({ navigation }) => {
             <MultiSelect
               hideTags
               items={items}
-              uniqueKey="id"
+              uniqueKey="upi_id"
               ref={multiSelectRef}
               onSelectedItemsChange={onSelectedItemsChange}
-              selectedItems={selectedItems.map((item) => item.id)} // Pass only ids to the MultiSelect component
+              selectedItems={selectedItems.map((item) => item.upi_id)} // Pass only ids to the MultiSelect component
               selectText="Pick members"
               searchInputPlaceholderText="Search Items..."
               onChangeInput={(text) => console.log(text)}
