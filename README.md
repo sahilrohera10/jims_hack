@@ -8,11 +8,14 @@ Welcome to our revolutionary project aimed at reimagining the UPI (Unified Payme
 
 ## Problem Statements
 ![2](https://github.com/yash-25log/jims_hack/assets/58944204/492027ee-1702-451d-b5f5-d258c070d1d8)
+
 ## Features:
 ![4](https://github.com/yash-25log/jims_hack/assets/58944204/6f45e6f2-3153-44ae-a662-707fcd7fcfff)
+
 ### 1.Contri Rooms for Collaborative Spending: 
-![WhatsApp Image 2024-02-06 at 14 50 42_bdecbd2b](https://github.com/yash-25log/jims_hack/assets/58944204/20d09c6a-5442-4c63-a8b1-9b0f805b808a)
+![CodeKshetra (1)](https://github.com/yash-25log/jims_hack/assets/58944204/fb2fb79a-f4a0-4909-89e6-7c9ec3429c87)
 Collaborate seamlessly with others for shared expenses, making group transactions more manageable and transparent. 
+
 ### 2.Payment Glitch Mechanism: 
 ![CodeKshetra](https://github.com/yash-25log/jims_hack/assets/58944204/7cbe8d56-1a04-4515-b058-e04eb7357a43)
 <br>
