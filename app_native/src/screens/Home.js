@@ -32,7 +32,11 @@ const contributionRoomsData = [
 ];
 
 // Define the HomeScreen component
-const Home = () => {
+const Home = ({ navigation }) => {
+  const navigateToNextScreen = () => {
+    navigation.navigate("pay");
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       {/* Top Carousel for Ads */}
@@ -44,7 +48,10 @@ const Home = () => {
 
       {/* Square Buttons for Pay and Add Contribution Group */}
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.squareButton}>
+        <TouchableOpacity
+          onPress={navigateToNextScreen}
+          style={styles.squareButton}
+        >
           <MaterialIcons name="send" size={20} color="#262626" />
           <Text style={styles.buttonText}>Pay</Text>
         </TouchableOpacity>
