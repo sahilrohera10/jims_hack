@@ -1,12 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import DialPanel from './src/screens/Pay2';
-import PaymentGateway from './src/screens/Pay2';
+import AppNavigator from "./src/AppNavigator";
+import { NavigationContainer } from "@react-navigation/native";
+import { StyleSheet, View } from "react-native";
+import { Provider } from "react-native-paper";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <PaymentGateway/>
+      <NavigationContainer>
+        <Provider>
+          <AppNavigator />
+        </Provider>
+      </NavigationContainer>
     </View>
   );
 }
@@ -14,8 +18,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#121212",
+    paddingHorizontal: 15,
   },
 });
