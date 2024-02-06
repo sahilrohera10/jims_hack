@@ -13,7 +13,7 @@ Welcome to our revolutionary project aimed at reimagining the UPI (Unified Payme
 ![4](https://github.com/yash-25log/jims_hack/assets/58944204/6f45e6f2-3153-44ae-a662-707fcd7fcfff)
 Collaborate seamlessly with others for shared expenses, making group transactions more manageable and transparent. 
 ### 2.Payment Glitch Mechanism: 
-![WhatsApp Image 2024-02-06 at 14 38 41_3fc482c2](https://github.com/yash-25log/jims_hack/assets/58944204/a9a006c0-5b22-4a2f-9272-639569ff64bd)
+![CodeKshetra](https://github.com/yash-25log/jims_hack/assets/58944204/7cbe8d56-1a04-4515-b058-e04eb7357a43)
 <br>
 Implement a robust mechanism to handle payment glitches and ensure smooth transactions even in challenging scenarios.
 ### 3.Creative Visualisation: 
