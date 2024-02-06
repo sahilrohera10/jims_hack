@@ -23,29 +23,34 @@ const AppNavigator = () => {
       <Stack.Screen
         name="pay"
         component={PaymentGateway}
-        options={
-          {
-            // headerShown: false,
-          }
-        }
+        options={{
+          // headerShown: false,
+          headerStyle: {
+            backgroundColor: "#121212",
+          },
+          headerTintColor: "#fff",
+        }}
       />
       <Stack.Screen
         name="pay3"
         component={Pay3}
-        options={
-          {
-            // headerShown: false,
-          }
-        }
+        options={{
+          // headerShown: false,
+          headerStyle: {
+            backgroundColor: "#121212",
+          },
+          headerTintColor: "#fff",
+        }}
       />
       <Stack.Screen
         name="success"
         component={SuccessfulScreen}
-        options={
-          {
-            // headerShown: false,
-          }
-        }
+        options={{
+          headerStyle: {
+            backgroundColor: "#121212",
+          },
+          headerTintColor: "#fff",
+        }}
       />
       <Stack.Screen
         name="settle"
