@@ -3,6 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import Pay3 from './src/screens/pay3';
 import SuccessfulScreen from './src/screens/sucessfullScreen';
 import AnalyticsScreen from './src/screens/analyticsScreen';
+import DialPanel from './src/screens/Pay2';
+import PaymentGateway from './src/screens/Pay2';
 
 export default function App() {
   return (
